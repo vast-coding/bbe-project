@@ -6,6 +6,7 @@ message=${cli_message:-Deploy storybook}
 
 npx build-storybook
 cd storybook-static
+
 git init .
 git remote add origin git@github.com:vast-coding/vast-coding.github.io.git
 git fetch
