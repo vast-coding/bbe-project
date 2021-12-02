@@ -1,0 +1,118 @@
+import { Meta } from '@storybook/addon-docs';
+
+import { Text } from './Text';
+
+import { Courier, Line, Card, Flex, Wrap } from './Text-stories.js';
+
+<Meta title="Components/Text/Text" component={Text} />
+
+# Text - Work in Progress
+
+## Needs discussion with designer before implementing.
+
+### All pixel values are converted to rem on the page.
+
+<Story name="Text">
+  <Flex>
+    <Card
+      color="#001080"
+      family="Demi"
+      fontSize="36px"
+      fontWeight="normal"
+      lineHeight="47px"
+      title="h1"
+    >
+      <Text.h1>ABC $12.34</Text.h1>
+    </Card>
+    <Card
+      color="#001080"
+      family="Demi"
+      fontSize="26px"
+      fontWeight="normal"
+      lineHeight="34px"
+      title="h2"
+    >
+      <Text.h2>ABC $12.34</Text.h2>
+    </Card>
+    <Card
+      color="#001080"
+      family="Demi"
+      fontSize="20px"
+      fontWeight="normal"
+      lineHeight="26px"
+      title="h3"
+    >
+      <Text.h3>ABC $12.34</Text.h3>
+    </Card>
+    <Card
+      color="#001080"
+      family="Arial"
+      fontSize="18px"
+      fontWeight="bold"
+      lineHeight="23px"
+      title="h4"
+    >
+      <Text.h4>ABC $12.34</Text.h4>
+    </Card>
+    <Card
+      color="#001080"
+      family="Arial"
+      fontSize="16px"
+      fontWeight="bold"
+      lineHeight="21px"
+      title="h5"
+    >
+      <Text.h5>ABC $12.34</Text.h5>
+    </Card>
+    <Card
+      color="#001080"
+      family="Arial"
+      fontSize="14px"
+      fontWeight="bold"
+      lineHeight="21px"
+      title="h6"
+    >
+      <Text.h6>ABC $12.34</Text.h6>
+    </Card>
+    <Card
+      color="#001080"
+      family="Arial"
+      fontSize="14px"
+      fontWeight="bold"
+      lineHeight="21px"
+      title="body"
+    >
+      <Text.body>ABC $12.34</Text.body>
+    </Card>
+    <Card
+      color="#001080"
+      family="Arial"
+      fontSize="46px"
+      fontWeight="bold"
+      lineHeight="46px"
+      title="priceLarge"
+    >
+      <Text.priceLarge>ABC $12.34</Text.priceLarge>
+    </Card>
+    <Card
+      color="#001080"
+      family="Arial"
+      fontSize="26px"
+      fontWeight="bold"
+      lineHeight="34px"
+      title="priceMedium"
+    >
+      <Text.priceMedium>ABC $12.34</Text.priceMedium>
+    </Card>
+    <Card
+      color="#001080"
+      family="Arial"
+      fontSize="20px"
+      fontWeight="bold"
+      lineHeight="26px"
+      title="priceSmall"
+    >
+      <Text.priceSmall>ABC $12.34</Text.priceSmall>
+    </Card>
+  </Flex>
+</Story>

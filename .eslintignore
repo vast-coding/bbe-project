@@ -1,0 +1,5 @@
+**/*.md
+**/*.mdx
+**/*.xml
+**/*.js.snap
+**/assets/
