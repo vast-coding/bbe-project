@@ -1,12 +1,12 @@
 import React from 'react';
-import { Squash } from './Squash';
+import { Slide } from './Slide';
 
 export default {
-  title: 'Components/Squash',
-  component: Squash,
+  title: 'Components/Slide',
+  component: Slide,
 };
 
-const Template = (args) => <Squash {...args}></Squash>;
+const Template = (args) => <Slide {...args}></Slide>;
 
 export const Variation1 = Template.bind({});
 Variation1.args = {

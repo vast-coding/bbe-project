@@ -4,22 +4,32 @@ import { BiBell } from 'react-icons/bi';
 import { Button } from '../Button/Button';
 import { IImageProps } from './Image.types';
 import React from 'react';
+import { Squash } from '../Squash/Squash';
 import { Text } from '../Text/Text';
 
 export const Image = ({
   srcUrl = 'https://picsum.photos/id/441/800',
   isOpen = false,
+  handleToggle,
 }: IImageProps) => (
-  <ImageStyled data-ref="Image" srcUrl={srcUrl} isOpen={{ isOpen }}>
-    <FlexSpread>
-      <div>
-        <Text.priceMedium color="white">Catalonia Atenas</Text.priceMedium>
-        <Text.h3 color="white">Barcelona Spain</Text.h3>
-      </div>
-      <Button>
-        <BiBell />
-      </Button>
-    </FlexSpread>
+  <ImageStyled
+    data-ref="Image"
+    style={{ '--w': isOpen ? '200px' : '500px' }}
+    srcUrl={srcUrl}
+    isOpen={{ isOpen }}
+    onClick={handleToggle}
+  >
+    <Squash isOpen={isOpen}>
+      <FlexSpread>
+        <div>
+          <Text.priceMedium color="white">Catalonia Atenas</Text.priceMedium>
+          <Text.h3 color="white">Barcelona Spain</Text.h3>
+        </div>
+        <Button>
+          <BiBell />
+        </Button>
+      </FlexSpread>
+    </Squash>
   </ImageStyled>
 );
 

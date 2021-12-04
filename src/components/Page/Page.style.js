@@ -15,5 +15,13 @@ export const PageStyled = styled.div`
   overflow: hidden;
 
   display: grid;
-  grid-template-rows: min-content 1fr min-content;
+  grid-template-rows: min-content min-content 1fr 1fr;
+  & > * {
+    border: 1px solid red;
+  }
+
+  ul {
+    display: flex;
+    gap: 20px;
+  }
 `;

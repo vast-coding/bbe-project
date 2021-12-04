@@ -17,5 +17,5 @@ London.args = {
 export const Red = Template.bind({});
 Red.args = {
   color: 'green',
-  Children: <BiBell />,
+  children: <BiBell />,
 };

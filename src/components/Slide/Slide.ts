@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type ISquashProps = {
+export type ISlideProps = {
   duration?: string | null;
   isOpen: boolean;
   containerHeight: number;

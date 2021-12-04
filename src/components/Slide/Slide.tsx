@@ -1,17 +1,17 @@
-import { Button, Scrim, SquashStyled } from './Squash.style';
+import { Button, Scrim, SlideStyled } from './Slide.style';
 import React, { useEffect, useRef, useState } from 'react';
 
-import { ISquashProps } from './Squash.types';
+import { ISlideProps } from './Slide.types';
 import { Text } from '../Text/Text';
 
-export const Squash = ({
+export const Slide = ({
   duration = '.3s',
   isOpen,
   // containerHeight,
   className,
   handleToggle,
   children,
-}: ISquashProps) => {
+}: ISlideProps) => {
   const [height, setHeight] = useState(0);
   // const [isOpen, setIsOpen] = useState(true);
   const ref = useRef(null);
@@ -19,15 +19,13 @@ export const Squash = ({
     setHeight(ref?.current?.clientHeight);
   }, [isOpen]);
   return (
-    <div style={{ height: '100%' }}>
-      <SquashStyled
-        data-testid="Squash"
-        isOpen={isOpen}
-        containerHeight={height}
-        duration={duration}
-      >
-        <div ref={ref}>{children}</div>
-      </SquashStyled>
-    </div>
+    <SlideStyled
+      data-testid="Slide"
+      isOpen={isOpen}
+      containerHeight={height}
+      duration={duration}
+    >
+      <div ref={ref}>{children}</div>
+    </SlideStyled>
   );
 };

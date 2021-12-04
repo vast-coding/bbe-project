@@ -144,8 +144,8 @@ export const h6 = styled.h5`
 `;
 
 export const body = styled.span<TextProps>`
-  font-size: ${px2rem(14)};
-  line-height: ${px2rem(21)};
+  font-size: ${px2rem(18)};
+  line-height: 1.5;
   font-family: ${(props) => theme.font};
   color: ${(props) =>
     props.color ? theme.colors[props.color] : theme.colors.shark};

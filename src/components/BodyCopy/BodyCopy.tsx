@@ -6,10 +6,13 @@ import { Text } from '../Text/Text';
 
 export const BodyCopy = ({ srcUrl = '', color = '' }: IBodyCopyProps) => (
   <BodyCopyStyled data-ref="BodyCopy">
+    <div>
+      <Text.priceMedium>Catalonia Atenas</Text.priceMedium>
+      <Text.h3>Barcelona Spain</Text.h3>
+    </div>
     <Text.body>
       Spain is the preferred holiday destination of millions of tourists and
       visitors each year.
     </Text.body>
-    <Text.h5>This tour includes all meals.</Text.h5>
   </BodyCopyStyled>
 );

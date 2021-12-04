@@ -6,6 +6,7 @@ export const SquashStyled = styled.div`
   height: ${(p) => (p.isOpen ? p.containerHeight + 'px' : '0')};
   overflow: hidden;
   transition: height ${(p) => p?.duration || '.3s'} ease-in-out;
+  width: 100%;
 `;
 
 export const Button = styled.button`
