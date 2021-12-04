@@ -17,7 +17,7 @@ export const ButtonWrapper = styled.div`
   grid-template-rows: 50px;
   & > div {
     grid-area: 1 / 1;
-    border: 2px solid red;
+    border: 4px solid white;
   }
   & > div:nth-child(0) {
     margin-left: 5px;
