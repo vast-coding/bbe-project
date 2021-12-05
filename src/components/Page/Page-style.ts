@@ -8,12 +8,13 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  border: 1px solid grey;
   max-width: 500px;
   margin: auto;
   height: 100vh;
   display: grid;
   grid-template-rows: min-content 1fr min-content;
+  padding-top: 10px;
+  padding-bottom: 10px;
   ul {
     display: flex;
     gap: 20px;

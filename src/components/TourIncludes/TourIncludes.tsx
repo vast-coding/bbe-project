@@ -24,18 +24,5 @@ export const TourIncludes = ({
         <BiBellMinus />
       </Button>
     </ButtonWrapper>
-    <Text.h2>Some text</Text.h2>
-    <Text.h3>Some text</Text.h3>
-    <Text.body>Some text</Text.body>
   </TourIncludesStyled>
 );
-// export const London = Template.bind({});
-// London.args = {
-//   srcUrl: 'https://picsum.photos/id/441/800',
-// };
-
-// export const Red = Template.bind({});
-// Red.args = {
-//   color: 'green',
-//   children: <BiBell />,
-// };

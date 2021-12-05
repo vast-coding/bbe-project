@@ -35,7 +35,7 @@ export const Image = ({
           duration={animationStepDuration}
         >
           <>
-            <Space height={[10, 20, 20]} />
+            <Space height={[20, 20, 20]} />
             <FlexSpread row>
               <div>
                 <Text.priceMedium color="white">
@@ -53,19 +53,20 @@ export const Image = ({
         <FlexSpread row>
           <Slide
             isOpen={showCardUI}
-            from="100%"
-            to="0"
+            // from="100%"
+            // to="0"
+            from={stage === ImageViewStages.OPEN ? '100%' : '0'}
+            to={stage === ImageViewStages.OPEN ? '0%' : '100%'}
             duration={animationStepDuration}
           >
             <>
-              {stage === ImageViewStages.OPEN && (
-                <Reverse>
-                  <Button onClick={stageBack}>
-                    <BiPlay />
-                  </Button>
-                </Reverse>
-              )}
-              <Space height={[10, 10, 20]} />
+              <Reverse>
+                <Button onClick={stageBack}>
+                  <BiPlay />
+                </Button>
+              </Reverse>
+
+              <Space height={[20, 20, 20]} />
             </>
           </Slide>
           <Slide
