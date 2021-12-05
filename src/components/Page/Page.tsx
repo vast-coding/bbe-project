@@ -16,6 +16,7 @@ import { ImageViewStages } from '../../constants/constants';
 import { Slide } from '../Slide/Slide';
 import { Slider } from '../Slider/Slider';
 import { Squash } from '../Squash/Squash';
+import { SquashSlide } from '../SquashSlide/SquashSlide';
 import { Text } from '../Text/Text';
 import { TourIncludes } from '../TourIncludes/TourIncludes';
 import styled from 'styled-components';
@@ -87,35 +88,30 @@ export const Page = () => {
           </SettingsMenu>
         </Squash>
         <Container>
-          <Squash
+          <SquashSlide
             isOpen={stage === ImageViewStages.CLOSED}
             duration={animationTime()}
+            from="-100%"
+            to="0"
             delay={animationTime()}
           >
-            <Slide
-              isOpen={stage === ImageViewStages.CLOSED}
-              duration={animationTime()}
-              from="-100%"
-              to="0"
-              delay={animationTime()}
-            >
-              <TitleWrap>
-                <Text.h1>Travel Destinations</Text.h1>
+            <TitleWrap>
+              <Text.h1>Travel Destinations</Text.h1>
 
-                <ul>
-                  {srcUrls.map((url, i) => (
-                    <Button
-                      srcUrl={url}
-                      key={i}
-                      onClick={() => selectItem(i)}
-                      isActive={selectedItem === i}
-                      size={100}
-                    />
-                  ))}
-                </ul>
-              </TitleWrap>
-            </Slide>
-          </Squash>
+              <ul>
+                {srcUrls.map((url, i) => (
+                  <Button
+                    srcUrl={url}
+                    key={i}
+                    onClick={() => selectItem(i)}
+                    isActive={selectedItem === i}
+                    size={100}
+                  />
+                ))}
+              </ul>
+            </TitleWrap>
+          </SquashSlide>
+
           <Slide
             isOpen={[ImageViewStages.OPEN, ImageViewStages.MAXIMIZED].includes(
               stage

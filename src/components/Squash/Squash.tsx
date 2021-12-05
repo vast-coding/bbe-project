@@ -21,16 +21,14 @@ export const Squash = ({
   }, [isOpen]);
 
   return (
-    <div>
-      <SquashStyled
-        data-testid="Squash"
-        isOpen={isOpen}
-        containerHeight={height}
-        duration={duration}
-        delay={delay}
-      >
-        <div ref={ref}>{children}</div>
-      </SquashStyled>
-    </div>
+    <SquashStyled
+      data-testid="Squash"
+      isOpen={isOpen}
+      containerHeight={height}
+      duration={duration}
+      delay={delay}
+    >
+      <div ref={ref}>{children}</div>
+    </SquashStyled>
   );
 };
