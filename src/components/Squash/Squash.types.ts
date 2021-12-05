@@ -1,14 +1,8 @@
 import { ReactNode } from 'react';
 
 export type ISquashProps = {
-  duration?: string | null;
+  duration?: string;
   isOpen: boolean;
-  containerHeight: number;
   children: ReactNode;
-  handleToggle: () => null;
-  trigger: ReactNode;
-  className?: string;
   delay?: string;
-  to: string;
-  from: string;
 };

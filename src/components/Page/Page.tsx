@@ -4,14 +4,15 @@ import {
   PageStyled,
   SettingsMenu,
   TitleWrap,
-} from './Page.style';
-import { Col, Row, Space } from '../Common/Common.style.js';
-import React, { useEffect, useState } from 'react';
+} from './Page-style';
+import { Col, Row, Space } from '../Common/Common-style';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { BiBell } from 'react-icons/bi';
 import { BodyCopy } from '../BodyCopy/BodyCopy';
 import { Button } from '../Button/Button';
 import { Image } from '../Image/Image';
+import { ImageViewStages } from '../../constants/constants';
 import { Slide } from '../Slide/Slide';
 import { Slider } from '../Slider/Slider';
 import { Squash } from '../Squash/Squash';
@@ -22,43 +23,35 @@ import { theme2021 as theme } from '../../theme';
 
 export const Page = () => {
   const [stage, setStage] = useState(0);
-  const [cardImage, setCardImage] = useState(0);
-  const [settingsTab, setSettingsTab] = useState(false);
-  const [duration, setDuration] = useState(theme.transitions.duration);
-  const [activeTab, setActiveTab] = useState(0);
-  const toggleSettingsTab = () => setSettingsTab(!settingsTab);
-  const maxStage = 2;
-  let time = (multiplier = 1) => multiplier * duration + 's';
-  useEffect(() => {
-    time = (multiplier = 1) => multiplier * duration + 's';
-  }, [duration]);
-  const handleToggle = (e) => {
-    e.stopPropagation();
-    // const nextStage = stage >= 1 ? 0 : stage + 1;
-    // const nextStage = stage % (maxStage + 1)
-    const nextStage = stage === 0 ? 1 : 0;
-    setStage(nextStage);
-  };
+  const [showSettingsMenu, setShowSettingsMenu] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(0);
 
-  const handleExpandCard = (e) => {
-    e.stopPropagation();
+  const [animationStepDuration, setAnimationStepDuration] = useState(
+    theme.transitions.duration
+  );
+  const animationTime = useCallback(
+    (multiplier = 1) => multiplier * animationStepDuration + 's',
+    [animationStepDuration]
+  );
 
-    setStage(stage === 2 ? 1 : 2);
+  const toggleSettingsMenu = () => setShowSettingsMenu(!showSettingsMenu);
+
+  const toggleExpandCard = () => {
+    setStage(
+      stage === ImageViewStages.MAXIMIZED
+        ? ImageViewStages.OPEN
+        : ImageViewStages.MAXIMIZED
+    );
   };
-  const stageTrigger = (activeT) => {
-    setActiveTab(activeT);
+  const selectItem = (itemIndex: number) => {
+    setSelectedItem(itemIndex);
     setStage(1);
   };
 
-  const stageBack = (e) => {
-    e.stopPropagation();
+  const stageBack = () => {
+    setStage(Math.max(0, stage - 1));
+  };
 
-    setStage(stage === 0 ? maxStage : stage - 1);
-  };
-  const settingsTrigger = (activeT) => {
-    // setActiveTab('settings');
-    // setStage('settings');
-  };
   const srcUrls = [
     'https://picsum.photos/id/441/800',
     'https://picsum.photos/id/412/800',
@@ -79,29 +72,30 @@ export const Page = () => {
   return (
     <>
       <Text.h3 style={{ position: 'fixed' }}>
-        STAGE {stage} activeTab {activeTab} settings;{' '}
-        {JSON.stringify(settingsTab)}
+        STAGE {stage} activeTab {selectedItem} settings;{' '}
+        {JSON.stringify(showSettingsMenu)}
       </Text.h3>
       <PageStyled data-ref="Page">
-        <SettingsMenu isOpen={settingsTab}>
+        <SettingsMenu isOpen={showSettingsMenu}>
           <Text.h5 as="label">Animation Settings</Text.h5>
           <Space height={[10, 10, 10]} />
-          <Slider updateDuration={setDuration} duration={duration} />
+          <Slider
+            updateDuration={setAnimationStepDuration}
+            duration={animationStepDuration}
+          />
         </SettingsMenu>
         <Container>
           <Squash
             isOpen={stage === 0}
-            duration={time()}
-            from="-100%"
-            to="0"
-            delay={time()}
+            duration={animationTime()}
+            delay={animationTime()}
           >
             <Slide
               isOpen={stage === 0}
-              duration={time()}
+              duration={animationTime()}
               from="-100%"
               to="0"
-              delay={time()}
+              delay={animationTime()}
             >
               <TitleWrap>
                 <Text.h1>Travel Destinations</Text.h1>
@@ -110,9 +104,9 @@ export const Page = () => {
                   {srcUrls.map((url, i) => (
                     <Button
                       srcUrl={url}
-                      key={'button' + i}
-                      onClick={() => stageTrigger(i)}
-                      isActive={activeTab === i}
+                      key={i}
+                      onClick={() => selectItem(i)}
+                      isActive={selectedItem === i}
                       size={100}
                     />
                   ))}
@@ -122,20 +116,19 @@ export const Page = () => {
           </Squash>
           <Slide
             isOpen={[1, 2].includes(stage)}
-            duration={time()}
+            duration={animationTime()}
             from="-100%"
             to="0"
-            left={true}
-            delay={time()}
+            left
+            delay={animationTime()}
           >
             <Image
-              isOpen={[1, 2].includes(stage)}
-              handleToggle={handleToggle}
-              handleExpandCard={handleExpandCard}
+              showCardUI={[1, 2].includes(stage)}
+              handleExpandCard={toggleExpandCard}
               stage={stage}
-              srcUrl={srcUrls[activeTab]}
-              duration={time()}
-              handleSettingsTab={toggleSettingsTab}
+              srcUrl={srcUrls[selectedItem]}
+              animationStepDuration={animationTime()}
+              handleSettingsTab={toggleSettingsMenu}
               stageBack={stageBack}
             />
           </Slide>
@@ -145,21 +138,16 @@ export const Page = () => {
               to="0"
               from="100%"
               left
-              duration={time()}
-              delay={time()}
+              duration={animationTime()}
+              delay={animationTime()}
             >
-              <Squash
-                handleToggle={handleToggle}
-                isOpen={[1].includes(stage)}
-                duration={time()}
-              >
+              <Squash isOpen={[1].includes(stage)} duration={animationTime()}>
                 <BodyCopy />
               </Squash>
               <Squash
-                handleToggle={handleToggle}
                 isOpen={[1].includes(stage)}
-                duration={time()}
-                delay={time(2)}
+                duration={animationTime()}
+                delay={animationTime(2)}
               >
                 <TourIncludes />
               </Squash>

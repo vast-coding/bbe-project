@@ -2,7 +2,12 @@ import styled, { css } from 'styled-components';
 
 import { mediaQueries } from '../../theme';
 
-export const SquashStyled = styled.div`
+export const SquashStyled = styled.div<{
+  isOpen?: boolean;
+  containerHeight?: number;
+  duration?: string;
+  delay?: string;
+}>`
   height: ${(p) => (p.isOpen ? p.containerHeight + 'px' : '0')};
   overflow: hidden;
   transition: height ${(p) => p?.duration || '.3s'} ease-in-out;
@@ -40,7 +45,7 @@ export const Button = styled.button`
 //   height: unset;
 // }
 
-export const Scrim = styled.div`
+export const Scrim = styled.div<{ isOpen?: boolean }>`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   bottom: 0;

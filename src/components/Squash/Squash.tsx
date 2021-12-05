@@ -1,4 +1,4 @@
-import { Button, Scrim, SquashStyled } from './Squash.style';
+import { Button, Scrim, SquashStyled } from './Squash-style';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { ISquashProps } from './Squash.types';
@@ -7,21 +7,20 @@ import { Text } from '../Text/Text';
 export const Squash = ({
   duration = '.3s',
   isOpen,
-  // containerHeight,
-  className,
-  handleToggle,
   children,
   delay,
 }: ISquashProps) => {
   const [height, setHeight] = useState(0);
-  // const [isOpen, setIsOpen] = useState(true);
-  const ref = useRef(null);
+
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    setHeight(ref?.current?.clientHeight);
+    const height = ref?.current?.clientHeight;
+    if (height !== undefined) {
+      setHeight(height);
+    }
   }, [isOpen]);
-  const cssHeight = isOpen ? '100%' : '0';
+
   return (
-    // <div>  style={{ height: cssHeight }}>
     <div>
       <SquashStyled
         data-testid="Squash"

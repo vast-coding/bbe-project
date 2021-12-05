@@ -5,11 +5,12 @@ import {
   BiFullscreen,
   BiPlay,
 } from 'react-icons/bi';
-import { FlexSpread, Reverse, Space } from '../Common/Common.style';
+import { FlexSpread, Reverse, Space } from '../Common/Common-style';
 
 import { Button } from '../Button/Button';
 import { IImageProps } from './Image.types';
-import { ImageStyled } from './Image.style';
+import { ImageStyled } from './Image-style';
+import { ImageViewStages } from '../../constants/constants';
 import React from 'react';
 import { Slide } from '../Slide/Slide';
 import { Text } from '../Text/Text';
@@ -17,18 +18,22 @@ import { theme2021 as theme } from '../../theme';
 
 export const Image = ({
   srcUrl = 'https://picsum.photos/id/441/800',
-  isOpen = false,
-  handleToggle,
+  showCardUI = false,
   stage,
-  duration,
+  animationStepDuration,
   handleSettingsTab,
   handleExpandCard,
   stageBack,
 }: IImageProps) => {
   return (
-    <ImageStyled data-ref="Image" srcUrl={srcUrl} isOpen={{ isOpen }}>
+    <ImageStyled data-ref="Image" srcUrl={srcUrl}>
       <FlexSpread height="100%">
-        <Slide isOpen={isOpen} from="-100%" to="0" duration={duration}>
+        <Slide
+          isOpen={showCardUI}
+          from="-100%"
+          to="0"
+          duration={animationStepDuration}
+        >
           <>
             <Space height={[10, 20, 20]} />
             <FlexSpread row>
@@ -46,18 +51,32 @@ export const Image = ({
         </Slide>
 
         <FlexSpread row>
-          <Slide isOpen={!isOpen} from="0" to="100%" duration={duration}>
+          <Slide
+            isOpen={showCardUI}
+            from="100%"
+            to="0"
+            duration={animationStepDuration}
+          >
             <>
               <Reverse>
                 <Button onClick={stageBack}>
-                  {stage === 2 ? <BiExitFullscreen /> : <BiPlay />}
+                  {stage === ImageViewStages.MAXIMIZED ? (
+                    <BiExitFullscreen />
+                  ) : (
+                    <BiPlay />
+                  )}
                 </Button>
               </Reverse>
               <Space height={[10, 10, 20]} />
             </>
           </Slide>
-          <Slide isOpen={!isOpen} from="0" to="100%" duration={duration}>
-            {stage === 1 && (
+          <Slide
+            isOpen={showCardUI}
+            from="100%"
+            to="0"
+            duration={animationStepDuration}
+          >
+            {stage === ImageViewStages.OPEN && (
               <Button onClick={handleExpandCard}>
                 <BiFullscreen />
               </Button>

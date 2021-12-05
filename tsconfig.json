@@ -16,7 +16,13 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES5",
+    "target": "ES5"
   },
-  "include": ["src/**/*", "./jest-setup.ts","src/types/untyped.d.ts"]
+  "include": [
+    "src/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "./jest-setup.ts",
+    "src/types/untyped.d.ts"
+  ]
 }

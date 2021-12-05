@@ -1,4 +1,4 @@
-import { Col } from '../Common/Common.style';
+import { Col } from '../Common/Common-style';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -19,9 +19,6 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  & > * {
-    /* border: 1px solid red; */
-  }
 `;
 
 export const PageStyled = styled.div`
@@ -41,7 +38,7 @@ export const BottomContent = styled.div`
   transition: max-height 10s ease-in-out;
 `;
 
-export const SettingsMenu = styled(Col)`
+export const SettingsMenu = styled(Col)<{ isOpen: boolean }>`
   max-height: 0px;
   max-width: 500px;
   margin: auto;

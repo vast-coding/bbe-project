@@ -4,36 +4,37 @@ import { mediaQueries } from '../../theme';
 
 const { mobile, desktop, tablet } = mediaQueries;
 
-const getResponsiveSize = (p) => {
-  const dim = p.height ? 'height' : 'width';
+interface ResponsiveDimensions {
+  height?: number[];
+  width?: number[];
+}
+const getResponsiveSize = (p: ResponsiveDimensions) => {
+  const dim: keyof typeof p = p.height ? 'height' : 'width';
   return css`
     @media ${mobile} {
-      ${dim}: ${p[dim][0]}px;
+      ${dim}: ${p[dim]?.[0]}px;
     }
     @media ${tablet} {
-      ${dim}: ${p[dim][1]}px;
+      ${dim}: ${p[dim]?.[1]}px;
     }
     @media ${desktop} {
-      ${dim}: ${p[dim][2]}px;
+      ${dim}: ${p[dim]?.[2]}px;
     }
   `;
 };
 
-export const Space = styled.span`
+export const Space = styled.span<
+  {
+    mobileHidden?: boolean;
+    desktopHidden?: boolean;
+    tabletHidden?: boolean;
+  } & ResponsiveDimensions
+>`
   display: ${(p) => (p.width ? 'inline-block' : 'block')};
   ${getResponsiveSize}
-
-  ${(props) =>
-    props.height < 0 &&
-    css`
-      margin-top: ${(p) => p.height}px;
-    `};
-  ${(p) => p.mobileHidden && hide(mobile)}
-  ${(p) => p.desktopHidden && hide(desktop)}
-  ${(p) => p.tabletHidden && hide(tablet)}
 `;
 
-export const FlexSpread = styled.div`
+export const FlexSpread = styled.div<{ row?: boolean; height?: string }>`
   display: flex;
   flex-direction: ${(p) => (p.row ? 'row' : 'column')};
   justify-content: space-between;
@@ -52,12 +53,12 @@ const spaceBetween = css`
   justify-content: space-between;
 `;
 
-export const Row = styled.div`
+export const Row = styled.div<{ spread?: boolean }>`
   display: flex;
   ${(p) => p.spread && spaceBetween}
 `;
 
-export const Col = styled.div`
+export const Col = styled.div<{ spread?: boolean }>`
   display: flex;
   flex-direction: column;
   ${(p) => p.spread && spaceBetween}

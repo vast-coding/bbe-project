@@ -1,18 +1,24 @@
 import styled, { css } from 'styled-components';
 
-const backgroundImage = (p) =>
+interface ButtonStyledProps {
+  srcUrl?: string;
+  color?: string;
+  isActive?: boolean;
+  size?: number;
+}
+const backgroundImage = (p: ButtonStyledProps) =>
   p.srcUrl &&
-  css`
+  css<ButtonStyledProps>`
     background-image: url(${(p) => p.srcUrl});
   `;
 
-const backgroundColor = (p) =>
+const backgroundColor = (p: ButtonStyledProps) =>
   p.color &&
-  css`
+  css<ButtonStyledProps>`
     background-color: url(${(p) => p.color});
   `;
 
-const getSize = (p) => {
+const getSize = (p: ButtonStyledProps) => {
   if (p.size) {
     return css`
       border-radius: ${p.size / 2}px;
@@ -21,7 +27,7 @@ const getSize = (p) => {
     `;
   }
 };
-export const ButtonStyled = styled.div`
+export const ButtonStyled = styled.div<ButtonStyledProps>`
   color: ${(props) => props.theme.colors.white};
   border-radius: 30px;
   height: 60px;

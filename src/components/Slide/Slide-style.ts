@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { mediaQueries } from '../../theme';
-
-const animation = (p) => {
+const animation = (p: SlideStyledProps) => {
   const strTransition = p.isOpen ? p.to : p.from;
 
   const x = p.left ? strTransition : '0';
@@ -13,7 +11,15 @@ const animation = (p) => {
   `;
 };
 
-export const SlideStyled = styled.div`
+interface SlideStyledProps {
+  duration?: string;
+  delay?: string;
+  left?: boolean;
+  to: string;
+  from: string;
+  isOpen?: boolean;
+}
+export const SlideStyled = styled.div<SlideStyledProps>`
   ${animation}
   overflow: hidden;
   transition: transform ${(p) => p?.duration || '.3s'} ease-in-out;

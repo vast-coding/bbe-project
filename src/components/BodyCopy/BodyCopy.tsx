@@ -1,11 +1,11 @@
 import { BiBell } from 'react-icons/bi';
 import { BodyCopyStyled } from './BodyCopy.style';
-import { FlexSpread } from '../Common/Common.style';
+import { FlexSpread } from '../Common/Common-style';
 import { IBodyCopyProps } from './BodyCopy.types';
 import React from 'react';
 import { Text } from '../Text/Text';
 
-export const BodyCopy = ({ srcUrl = '', color = '' }: IBodyCopyProps) => (
+export const BodyCopy = (props: IBodyCopyProps) => (
   <BodyCopyStyled data-ref="BodyCopy">
     <FlexSpread row>
       <div>
