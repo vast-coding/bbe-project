@@ -58,15 +58,13 @@ export const Image = ({
             duration={animationStepDuration}
           >
             <>
-              <Reverse>
-                <Button onClick={stageBack}>
-                  {stage === ImageViewStages.MAXIMIZED ? (
-                    <BiExitFullscreen />
-                  ) : (
+              {stage === ImageViewStages.OPEN && (
+                <Reverse>
+                  <Button onClick={stageBack}>
                     <BiPlay />
-                  )}
-                </Button>
-              </Reverse>
+                  </Button>
+                </Reverse>
+              )}
               <Space height={[10, 10, 20]} />
             </>
           </Slide>
@@ -79,6 +77,12 @@ export const Image = ({
             {stage === ImageViewStages.OPEN && (
               <Button onClick={handleExpandCard}>
                 <BiFullscreen />
+              </Button>
+            )}
+
+            {stage === ImageViewStages.MAXIMIZED && (
+              <Button onClick={stageBack}>
+                <BiExitFullscreen />
               </Button>
             )}
           </Slide>

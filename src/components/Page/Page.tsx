@@ -76,22 +76,24 @@ export const Page = () => {
         {JSON.stringify(showSettingsMenu)}
       </Text.h3>
       <PageStyled data-ref="Page">
-        <SettingsMenu isOpen={showSettingsMenu}>
-          <Text.h5 as="label">Animation Settings</Text.h5>
-          <Space height={[10, 10, 10]} />
-          <Slider
-            updateDuration={setAnimationStepDuration}
-            duration={animationStepDuration}
-          />
-        </SettingsMenu>
+        <Squash isOpen={showSettingsMenu}>
+          <SettingsMenu>
+            <Text.h5 as="label">Animation Settings</Text.h5>
+            <Space height={[10, 10, 10]} />
+            <Slider
+              updateDuration={setAnimationStepDuration}
+              duration={animationStepDuration}
+            />
+          </SettingsMenu>
+        </Squash>
         <Container>
           <Squash
-            isOpen={stage === 0}
+            isOpen={stage === ImageViewStages.CLOSED}
             duration={animationTime()}
             delay={animationTime()}
           >
             <Slide
-              isOpen={stage === 0}
+              isOpen={stage === ImageViewStages.CLOSED}
               duration={animationTime()}
               from="-100%"
               to="0"
@@ -115,7 +117,9 @@ export const Page = () => {
             </Slide>
           </Squash>
           <Slide
-            isOpen={[1, 2].includes(stage)}
+            isOpen={[ImageViewStages.OPEN, ImageViewStages.MAXIMIZED].includes(
+              stage
+            )}
             duration={animationTime()}
             from="-100%"
             to="0"
@@ -123,7 +127,10 @@ export const Page = () => {
             delay={animationTime()}
           >
             <Image
-              showCardUI={[1, 2].includes(stage)}
+              showCardUI={[
+                ImageViewStages.OPEN,
+                ImageViewStages.MAXIMIZED,
+              ].includes(stage)}
               handleExpandCard={toggleExpandCard}
               stage={stage}
               srcUrl={srcUrls[selectedItem]}
@@ -134,18 +141,21 @@ export const Page = () => {
           </Slide>
           <BottomContent>
             <Slide
-              isOpen={[1].includes(stage)}
+              isOpen={[ImageViewStages.OPEN].includes(stage)}
               to="0"
               from="100%"
               left
               duration={animationTime()}
               delay={animationTime()}
             >
-              <Squash isOpen={[1].includes(stage)} duration={animationTime()}>
+              <Squash
+                isOpen={[ImageViewStages.OPEN].includes(stage)}
+                duration={animationTime()}
+              >
                 <BodyCopy />
               </Squash>
               <Squash
-                isOpen={[1].includes(stage)}
+                isOpen={[ImageViewStages.OPEN].includes(stage)}
                 duration={animationTime()}
                 delay={animationTime(2)}
               >

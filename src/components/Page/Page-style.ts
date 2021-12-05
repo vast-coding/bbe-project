@@ -38,13 +38,8 @@ export const BottomContent = styled.div`
   transition: max-height 10s ease-in-out;
 `;
 
-export const SettingsMenu = styled(Col)<{ isOpen: boolean }>`
-  max-height: 0px;
+export const SettingsMenu = styled(Col)`
   max-width: 500px;
   margin: auto;
-  overflow: hidden;
-  max-height: ${(p) => (p.isOpen ? '25vh' : '0')};
-  transition-property: max-height;
   padding: 10px 0;
-  transition-duration: 1s;
 `;
