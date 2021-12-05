@@ -22,10 +22,18 @@ export const ForestBridge = Template.bind({});
 ForestBridge.args = {
   srcUrl: 'https://picsum.photos/id/879/800',
 };
-// <img src="https://picsum.photos/id/441/800" />
 
-// forest
-// <img src="https://picsum.photos/id/412/800" />
+export const ForestBridge1 = Template.bind({});
+ForestBridge1.args = {
+  srcUrl: 'https://picsum.photos/id/441/800',
+};
 
-// forest bridge
-// <img src="https://picsum.photos/id/879/800" />
+export const ForestBridge2 = Template.bind({});
+ForestBridge2.args = {
+  srcUrl: 'https://picsum.photos/id/412/800',
+};
+
+export const ForestBridge3 = Template.bind({});
+ForestBridge3.args = {
+  srcUrl: 'https://picsum.photos/id/879/800',
+};

@@ -1,27 +1,53 @@
+import { Col } from '../Common/Common.style';
 import styled from 'styled-components';
 
-export const PageStyled = styled.div`
+export const Container = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   border: 1px solid grey;
-  padding: 20px 10px;
-  gap: 20px;
   max-width: 500px;
   margin: auto;
   height: 100vh;
-  overflow: hidden;
-
   display: grid;
-  grid-template-rows: min-content min-content 1fr 1fr;
-  & > * {
-    border: 1px solid red;
-  }
-
+  grid-template-rows: min-content 1fr min-content;
   ul {
     display: flex;
     gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+  & > * {
+    /* border: 1px solid red; */
+  }
+`;
+
+export const PageStyled = styled.div`
+  padding: 0px 10px;
+  border: 1px solid grey;
+`;
+
+export const TitleWrap = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+export const BottomContent = styled.div`
+  max-height: 1000px;
+  transition: max-height 10s ease-in-out;
+`;
+
+export const SettingsMenu = styled(Col)`
+  max-height: 0px;
+  max-width: 500px;
+  margin: auto;
+  overflow: hidden;
+  max-height: ${(p) => (p.isOpen ? '25vh' : '0')};
+  transition-property: max-height;
+  padding: 10px 0;
+  transition-duration: 1s;
 `;

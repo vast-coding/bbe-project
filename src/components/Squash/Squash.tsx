@@ -11,6 +11,7 @@ export const Squash = ({
   className,
   handleToggle,
   children,
+  delay,
 }: ISquashProps) => {
   const [height, setHeight] = useState(0);
   // const [isOpen, setIsOpen] = useState(true);
@@ -18,13 +19,16 @@ export const Squash = ({
   useEffect(() => {
     setHeight(ref?.current?.clientHeight);
   }, [isOpen]);
+  const cssHeight = isOpen ? '100%' : '0';
   return (
-    <div style={{ height: '100%' }}>
+    // <div>  style={{ height: cssHeight }}>
+    <div>
       <SquashStyled
         data-testid="Squash"
         isOpen={isOpen}
         containerHeight={height}
         duration={duration}
+        delay={delay}
       >
         <div ref={ref}>{children}</div>
       </SquashStyled>

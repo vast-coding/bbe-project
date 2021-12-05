@@ -5,8 +5,8 @@ export const TourIncludesStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid white;
   gap: 20px;
+  padding: 20px;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -17,21 +17,16 @@ export const ButtonWrapper = styled.div`
   grid-template-rows: 50px;
   & > div {
     grid-area: 1 / 1;
-    border: 4px solid white;
+    border: 3px solid white;
   }
-  & > div:nth-child(0) {
-    margin-left: 5px;
-  }
+
   & > div:nth-child(1) {
-    margin-left: 25px;
+    margin-left: 0px;
   }
   & > div:nth-child(2) {
-    margin-left: 50px;
+    margin-left: 40px;
   }
   & > div:nth-child(3) {
-    margin-left: 75px;
-  }
-  & > div:nth-child(4) {
-    margin-left: 100px;
+    margin-left: 80px;
   }
 `;

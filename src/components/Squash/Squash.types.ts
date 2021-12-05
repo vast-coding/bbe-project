@@ -8,4 +8,7 @@ export type ISquashProps = {
   handleToggle: () => null;
   trigger: ReactNode;
   className?: string;
+  delay?: string;
+  to: string;
+  from: string;
 };

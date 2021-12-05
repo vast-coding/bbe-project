@@ -5,6 +5,6 @@ export const BodyCopyStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid white;
   gap: 20px;
+  padding: 20px;
 `;

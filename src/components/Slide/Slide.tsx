@@ -6,11 +6,15 @@ import { Text } from '../Text/Text';
 
 export const Slide = ({
   duration = '.3s',
+  delay = '0',
   isOpen,
+  from,
+  to,
   // containerHeight,
   className,
   handleToggle,
   children,
+  left,
 }: ISlideProps) => {
   const [height, setHeight] = useState(0);
   // const [isOpen, setIsOpen] = useState(true);
@@ -24,8 +28,14 @@ export const Slide = ({
       isOpen={isOpen}
       containerHeight={height}
       duration={duration}
+      delay={delay}
+      from={from}
+      to={to}
+      left={left}
     >
-      <div ref={ref}>{children}</div>
+      <div style={{ height: '100%' }} ref={ref}>
+        {children}
+      </div>
     </SlideStyled>
   );
 };

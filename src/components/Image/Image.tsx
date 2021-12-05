@@ -1,37 +1,73 @@
-import { FlexSpread, ImageStyled } from './Image.style';
+import {
+  BiBell,
+  BiCog,
+  BiExitFullscreen,
+  BiFullscreen,
+  BiPlay,
+} from 'react-icons/bi';
+import { FlexSpread, Reverse, Space } from '../Common/Common.style';
 
-import { BiBell } from 'react-icons/bi';
 import { Button } from '../Button/Button';
 import { IImageProps } from './Image.types';
+import { ImageStyled } from './Image.style';
 import React from 'react';
-import { Squash } from '../Squash/Squash';
+import { Slide } from '../Slide/Slide';
 import { Text } from '../Text/Text';
+import { theme2021 as theme } from '../../theme';
 
 export const Image = ({
   srcUrl = 'https://picsum.photos/id/441/800',
   isOpen = false,
   handleToggle,
-}: IImageProps) => (
-  <ImageStyled
-    data-ref="Image"
-    style={{ '--w': isOpen ? '200px' : '500px' }}
-    srcUrl={srcUrl}
-    isOpen={{ isOpen }}
-    onClick={handleToggle}
-  >
-    <Squash isOpen={isOpen}>
-      <FlexSpread>
-        <div>
-          <Text.priceMedium color="white">Catalonia Atenas</Text.priceMedium>
-          <Text.h3 color="white">Barcelona Spain</Text.h3>
-        </div>
-        <Button>
-          <BiBell />
-        </Button>
+  stage,
+  duration,
+  handleSettingsTab,
+  handleExpandCard,
+  stageBack,
+}: IImageProps) => {
+  return (
+    <ImageStyled data-ref="Image" srcUrl={srcUrl} isOpen={{ isOpen }}>
+      <FlexSpread height="100%">
+        <Slide isOpen={isOpen} from="-100%" to="0" duration={duration}>
+          <>
+            <Space height={[10, 20, 20]} />
+            <FlexSpread row>
+              <div>
+                <Text.priceMedium color="white">
+                  Catalonia Atenas
+                </Text.priceMedium>
+                <Text.h3 color="white">Barcelona Spain</Text.h3>
+              </div>
+              <Button onClick={handleSettingsTab}>
+                <BiCog />
+              </Button>
+            </FlexSpread>
+          </>
+        </Slide>
+
+        <FlexSpread row>
+          <Slide isOpen={!isOpen} from="0" to="100%" duration={duration}>
+            <>
+              <Reverse>
+                <Button onClick={stageBack}>
+                  {stage === 2 ? <BiExitFullscreen /> : <BiPlay />}
+                </Button>
+              </Reverse>
+              <Space height={[10, 10, 20]} />
+            </>
+          </Slide>
+          <Slide isOpen={!isOpen} from="0" to="100%" duration={duration}>
+            {stage === 1 && (
+              <Button onClick={handleExpandCard}>
+                <BiFullscreen />
+              </Button>
+            )}
+          </Slide>
+        </FlexSpread>
       </FlexSpread>
-    </Squash>
-  </ImageStyled>
-);
+    </ImageStyled>
+  );
+};
 
 // london
 // <img src="https://picsum.photos/id/441/800" />

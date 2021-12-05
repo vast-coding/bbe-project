@@ -2,7 +2,7 @@ import { Page } from './Page';
 import React from 'react';
 
 export default {
-  title: 'Components/Page',
+  title: 'Page',
   component: Page,
 };
 

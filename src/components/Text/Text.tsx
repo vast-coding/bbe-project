@@ -148,7 +148,7 @@ export const body = styled.span<TextProps>`
   line-height: 1.5;
   font-family: ${(props) => theme.font};
   color: ${(props) =>
-    props.color ? theme.colors[props.color] : theme.colors.shark};
+    props.color ? theme.colors[props.color] : theme.colors.primary};
 `;
 
 const bodyLarge = styled(body)`

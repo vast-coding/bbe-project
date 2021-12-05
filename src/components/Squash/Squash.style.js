@@ -7,6 +7,7 @@ export const SquashStyled = styled.div`
   overflow: hidden;
   transition: height ${(p) => p?.duration || '.3s'} ease-in-out;
   width: 100%;
+  transition-delay: ${(p) => p.delay};
 `;
 
 export const Button = styled.button`

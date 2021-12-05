@@ -65,7 +65,7 @@ const zIndex = {
 
 const transitions = {
   easing: 'ease',
-  duration: 350,
+  duration: 0.5,
 };
 
 export const theme = {
@@ -96,9 +96,9 @@ export const theme2021 = {
 
 // responsive style short-hands
 
-const desktop = () => '(min-width: 990px)';
 const mobile = () => '(max-width: 639px)';
 const tablet = () => '(min-width: 640px) and (max-width: 989px)';
+const desktop = () => '(min-width: 990px)';
 const mobileAndTablet = () => `(max-width: 989px)`;
 
 export const mediaQueries = {
@@ -106,7 +106,6 @@ export const mediaQueries = {
   mobile,
   tablet,
   mobileAndTablet,
-  tablet,
 };
 
 type IWithDisabledStyleProps = { disabled: boolean; theme: ITheme };
