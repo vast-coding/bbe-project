@@ -13,7 +13,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   gap: 10px;
   display: grid;
-  grid-template-columns: 50px 50px 50px 50px 50px 50px;
+  grid-template-columns: 50px 50px 50px;
   grid-template-rows: 50px;
   & > div {
     grid-area: 1 / 1;
