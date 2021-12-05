@@ -53,8 +53,6 @@ export const Image = ({
         <FlexSpread row>
           <Slide
             isOpen={showCardUI}
-            // from="100%"
-            // to="0"
             from={stage === ImageViewStages.OPEN ? '100%' : '0'}
             to={stage === ImageViewStages.OPEN ? '0%' : '100%'}
             duration={animationStepDuration}
