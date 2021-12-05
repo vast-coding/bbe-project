@@ -72,10 +72,6 @@ export const Page = () => {
 
   return (
     <>
-      <Text.h3 style={{ position: 'fixed' }}>
-        STAGE {stage} activeTab {selectedItem} settings;{' '}
-        {JSON.stringify(showSettingsMenu)}
-      </Text.h3>
       <PageStyled data-ref="Page">
         <Squash isOpen={showSettingsMenu}>
           <SettingsMenu>

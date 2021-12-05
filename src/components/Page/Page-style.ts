@@ -1,4 +1,5 @@
 import { Col } from '../Common/Common-style';
+import { mediaQueries } from '../../theme';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -18,6 +19,9 @@ export const Container = styled.div`
     gap: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    @media ${mediaQueries.mobile} {
+      overflow-x: scroll;
+    }
   }
 `;
 
