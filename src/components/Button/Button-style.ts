@@ -70,6 +70,5 @@ export const ButtonStyled = styled.div<ButtonStyledProps>`
       transform: scale(0.7);
       border: 1px solid black;
       box-shadow: 0 0 0 2px white, 0 0 0 4px grey;
-      /* animation-fill-mode: forwards; */
     `}
 `;
