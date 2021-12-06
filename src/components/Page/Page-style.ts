@@ -35,6 +35,7 @@ export const TitleWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-top: 20px;
 `;
 
 export const BottomContent = styled.div`
