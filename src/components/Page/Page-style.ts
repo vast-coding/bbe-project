@@ -32,7 +32,6 @@ export const PageStyled = styled.div`
 `;
 
 export const TitleWrap = styled.div`
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;

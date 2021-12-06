@@ -62,11 +62,14 @@ export const ButtonStyled = styled.div<ButtonStyledProps>`
     box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(77, 144, 254);
   }
 
+  transition: transform 0.3s ease-in-out;
+
   ${(p) =>
     p.isActive &&
     css`
-      transform: scale(0.9);
-      transition: transform 0.3s ease-in-out;
+      transform: scale(0.7);
       border: 1px solid black;
+      box-shadow: 0 0 0 2px white, 0 0 0 4px grey;
+      /* animation-fill-mode: forwards; */
     `}
 `;
