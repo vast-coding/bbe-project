@@ -24,6 +24,7 @@ export const Image = ({
   handleSettingsTab,
   handleExpandCard,
   stageBack,
+  ease,
 }: IImageProps) => {
   return (
     <ImageStyled data-ref="Image" srcUrl={srcUrl}>
@@ -37,24 +38,29 @@ export const Image = ({
           <>
             <Space height={[20, 20, 20]} />
             <FlexSpread row>
-              <div>
+              <Slide
+                isOpen={stage === ImageViewStages.OPEN}
+                from="0%"
+                to="-200%"
+                ease={ease}
+                duration={animationStepDuration}
+              >
                 <Text.priceMedium color="white">
                   Catalonia Atenas
                 </Text.priceMedium>
                 <Text.h3 color="white">Barcelona Spain</Text.h3>
-              </div>
+              </Slide>
               <Button onClick={handleSettingsTab}>
                 <BiCog />
               </Button>
             </FlexSpread>
           </>
         </Slide>
-
         <FlexSpread row>
           <Slide
-            isOpen={showCardUI}
-            from={stage === ImageViewStages.OPEN ? '100%' : '0'}
-            to={stage === ImageViewStages.OPEN ? '0%' : '100%'}
+            isOpen={showCardUI && stage !== ImageViewStages.MAXIMIZED}
+            from={'100%'}
+            to={'0'}
             duration={animationStepDuration}
           >
             <>
@@ -73,7 +79,7 @@ export const Image = ({
             to="0"
             duration={animationStepDuration}
           >
-            {stage === ImageViewStages.OPEN && (
+            {stage !== ImageViewStages.MAXIMIZED && (
               <Button onClick={handleExpandCard}>
                 <BiFullscreen />
               </Button>

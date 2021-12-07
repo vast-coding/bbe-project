@@ -14,6 +14,7 @@ const animation = (p: SlideStyledProps) => {
 interface SlideStyledProps {
   duration?: string;
   delay?: string;
+  ease?: string;
   left?: boolean;
   to: string;
   from: string;
@@ -22,7 +23,8 @@ interface SlideStyledProps {
 export const SlideStyled = styled.div<SlideStyledProps>`
   ${animation}
   overflow: hidden;
-  transition: transform ${(p) => p?.duration || '.3s'} ease-in-out;
-  transition-delay: ${(p) => p.delay};
+  transition: transform ${(p) => p?.duration || '.3s'}
+    ${(p) => (p?.ease ? p.ease : p?.isOpen ? 'ease-out' : 'ease-in')};
+  transition-delay: ${(p) => p?.delay || 0};
   height: 100%;
 `;

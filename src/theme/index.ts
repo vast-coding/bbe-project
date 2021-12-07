@@ -65,7 +65,7 @@ const zIndex = {
 
 const transitions = {
   easing: 'ease',
-  duration: 0.5,
+  duration: 0.4,
 };
 
 export const theme = {

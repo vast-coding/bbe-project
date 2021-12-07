@@ -3,13 +3,14 @@ import React from 'react';
 import { SlideStyled } from './Slide-style';
 
 export const Slide = ({
-  duration = '.3s',
-  delay = '0',
-  isOpen,
-  from,
-  to,
   children,
+  delay = '0',
+  duration = '.3s',
+  ease,
+  from,
+  isOpen,
   left,
+  to,
 }: ISlideProps) => {
   return (
     <SlideStyled
@@ -17,6 +18,7 @@ export const Slide = ({
       isOpen={isOpen}
       duration={duration}
       delay={delay}
+      ease={ease}
       from={from}
       to={to}
       left={left}

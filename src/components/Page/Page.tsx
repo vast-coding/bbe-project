@@ -126,7 +126,8 @@ export const Page = () => {
               handleExpandCard={toggleExpandCard}
               stage={stage}
               srcUrl={srcUrls[selectedItem]}
-              animationStepDuration={animationTime()}
+              animationStepDuration={animationTime(1.5)}
+              ease="ease"
               handleSettingsTab={toggleSettingsMenu}
               stageBack={stageBack}
             />
