@@ -6,11 +6,9 @@ export const ImageStyled = styled.div<{ srcUrl: string }>`
   overflow: hidden;
   background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.1) 15%,
-      rgba(0, 0, 0, 0) 25%,
-      rgba(0, 0, 0, 0) 95%,
-      rgba(0, 0, 0, 0.5) 100%
+      rgba(0, 0, 0, 0.5) 0% 10%,
+      rgba(0, 0, 0, 0) 25% 75%,
+      rgba(0, 0, 0, 0.6) 90% 100%
     ),
     url(${(p) => p.srcUrl});
   width: 100%;
